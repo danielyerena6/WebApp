@@ -10,7 +10,7 @@ scikit-image==0.13.0
 
 scikit-learn==0.21.3
 
-scipy==0.19.0
+scipy==1.10.0
 
 gunicorn
 joblib==0.14.0
