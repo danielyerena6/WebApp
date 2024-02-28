@@ -18,10 +18,10 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Echo secret -
-      run: echo ${{ secrets.ACR-TOKEN }}
+      run: echo " uper: ${{ secrets.ACR-TOKEN }}"
 
     - name: Echo secret _
-      run: echo ${{ secrets.ACR_TOKEN }}
+      run: echo " se_:${{ secrets.ACR_TOKEN }}"
 
     - name: Login to Azure Container Registry
       run: docker login -u Github-actions -p ${{ secrets.ACR-TOKEN }} dataregestry.azurecr.io
