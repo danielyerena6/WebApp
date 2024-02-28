@@ -18,7 +18,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Echo secret -
-      run: echo " uper: ${{ secrets.ACR-TOKEN }}"
+      run: echo " ${{ secrets.ACR-TOKEN }}"
 
     - name: Echo secret _
       run: echo " se_:${{ secrets.ACR_TOKEN }}"
