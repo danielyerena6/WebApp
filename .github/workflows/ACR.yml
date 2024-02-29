@@ -35,7 +35,7 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        client-id: fb42442d-f223-49c3-86ae-8cf287611d6d
+        client-id: 734bc75f-2da8-420b-880a-9ece19c266d9
         tenant-id: 32ba0e29-fcf4-470b-a3f1-631d223cd753
         subscription-id: da96463f-be69-458a-9d4d-c1829952e0bb
 
