@@ -17,9 +17,6 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Echo secret _
-      run: echo " s e_:${{ secrets.ACR_TOKEN }}"
-
     - name: Login to Azure Container Registry
       run: docker login -u Github-actions -p ${{ secrets.ACR_TOKEN }} dataregestry.azurecr.io
 
@@ -29,3 +26,14 @@ jobs:
         context: .
         push: true
         tags: dataregestry.azurecr.io/wine-model:v0.3
+
+    - name: Deploy to Azure Container App
+      uses: azure/aci-deploy@v1
+      with:
+        resource_group: data
+        container_name: wine-model
+        image: dataregestry.azurecr.io/wine-model:v0.3
+        registry_login_server: dataregestry.azurecr.io
+        registry_username: ${{ secrets.ACR_USERNAME }}
+        registry_password: ${{ secrets.ACR_TOKEN }}
+        location: West US 2
