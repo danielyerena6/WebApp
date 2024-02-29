@@ -35,9 +35,9 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        client-id: 3dc28d26-023b-4495-a7ae-ee9879538b40
-        tenant-id: 32ba0e29-fcf4-470b-a3f1-631d223cd753
-        subscription-id: da96463f-be69-458a-9d4d-c1829952e0bb
+        client-id:
+        tenant-id:
+        subscription-id:
 
     - name: Deploy to Azure Container App
       uses: azure/aci-deploy@v1
