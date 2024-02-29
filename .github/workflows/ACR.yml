@@ -27,6 +27,12 @@ jobs:
         push: true
         tags: dataregestry.azurecr.io/wine-model:v0.3
 
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: '{"clientId": "${{ secrets.AZURE_CLIENT_ID }}", "clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}", "tenantId": "${{ secrets.AZURE_TENANT_ID }}"}'
+
     - name: Deploy to Azure Container App
       uses: azure/aci-deploy@v1
       with:
