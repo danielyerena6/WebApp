@@ -9,7 +9,8 @@ class Item(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Pagina activa"}
+    return {"message": "Pagina activa",
+            "loc": "Se aplica el yaml desde azure"}
 
 @app.post("/predicciones")
 def prediccion1(item: Item):
