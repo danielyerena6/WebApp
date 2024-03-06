@@ -1,0 +1,43 @@
+name: Trigger auto deployment for wine-model
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/wine-model-AutoDeployTrigger-d30d9c21-6531-4c0d-a244-7a0929ee7b1c.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.WINEMODEL_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: dataregestry.azurecr.io
+          registryUsername: ${{ secrets.WINEMODEL_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.WINEMODEL_REGISTRY_PASSWORD }}
+          containerAppName: wine-model
+          resourceGroup: data
+          imageToBuild: dataregestry.azurecr.io/wine-model:${{ github.sha }}
+          
+            
+
+     
+
